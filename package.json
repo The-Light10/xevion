@@ -4,11 +4,11 @@
   "description": "Xevion - an autonomous terminal coding agent",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/the-light10/xevion.git"
+    "url": "git+https://github.com/The-Light10/xevion.git"
   },
-  "homepage": "https://github.com/the-light10/xevion#readme",
+  "homepage": "https://github.com/The-Light10/xevion#readme",
   "bugs": {
-    "url": "https://github.com/the-light10/xevion/issues"
+    "url": "https://github.com/The-Light10/xevion/issues"
   },
   "type": "module",
   "bin": {
