@@ -1,0 +1,48 @@
+{
+  "name": "xevion",
+  "version": "0.1.0",
+  "description": "Xevion - an autonomous terminal coding agent",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/the-light10/xevion.git"
+  },
+  "homepage": "https://github.com/the-light10/xevion#readme",
+  "bugs": {
+    "url": "https://github.com/the-light10/xevion/issues"
+  },
+  "type": "module",
+  "bin": {
+    "xevion": "dist/cli/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "src/branding/logo.svg"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "prepublishOnly": "npm run typecheck && npm test && npm run build",
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "npm run build:test && node scripts/run-tests.mjs",
+    "build:test": "tsc -p tsconfig.test.json",
+    "dev": "npm run build && node dist/cli/index.js"
+  },
+  "keywords": [
+    "cli",
+    "coding-agent",
+    "local-llm",
+    "terminal"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.2"
+  }
+}

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Xevion">
+  <rect width="128" height="128" rx="28" fill="#14161c"/>
+  <path d="M32 88 60 28h10L98 88H82l-6-14H52l-6 14H32Zm27-26h14l-7-17-7 17Z" fill="#f2b544"/>
+  <path d="M40 100h48" stroke="#5fd0c0" stroke-width="6" stroke-linecap="round"/>
+</svg>
