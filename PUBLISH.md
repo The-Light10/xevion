@@ -3,7 +3,7 @@
 ## Stato attuale
 
 - Repo pubblico: https://github.com/The-Light10/xevion
-- Release: https://github.com/The-Light10/xevion/releases/tag/v0.1.1
+- Release: https://github.com/The-Light10/xevion/releases/tag/v0.1.2
 - Nome npm: `xevion` (account npm `the_ligh10`, indipendente dal nome GitHub).
 - Canale di distribuzione: **solo npm** (`npm install -g xevion`).
 - CI: Ubuntu, macOS, Windows × Node 20/22 (`.github/workflows/ci.yml`).
@@ -24,11 +24,8 @@ La cartella `dist/` è committata: serve per installare il pacchetto da git e pe
 
 ## 2. Token npm
 
-Il workflow richiede un **granular access token** con:
-
-- packages e scopes: **Read and write (publish and stage)** (NON "stage only");
-- package selezionato: `xevion`;
-- **Bypass 2FA** abilitato, perché CI non può rispondere a una challenge 2FA.
+Il token attuale è **stage-only** (granular access token, package `xevion`). Il workflow usa
+`npm stage publish`; l'approvazione richiede la 2FA dell'account.
 
 Salva il token come secret:
 
@@ -41,16 +38,26 @@ gh secret set NPM_TOKEN -R The-Light10/xevion
 `.github/workflows/publish.yml` si attiva su una GitHub Release `published` (oppure con `workflow_dispatch`). Esegue typecheck, test, build e poi:
 
 ```bash
-npm publish --access public --provenance
+npm stage publish --access public --provenance
 ```
 
 Lo staging richiede npm >= 11.15.0 e Node >= 22.14.0: il workflow installa npm@latest su Node 22. `--provenance` richiede il repository pubblico.
+
+### Approvazione con 2FA
+
+```bash
+npx -y npm@latest stage list xevion
+npx -y npm@latest stage approve <STAGE_ID>
+```
+
+In alternativa: npmjs.com → **Staged Packages** → **Approve**.
 
 ### Via locale (alternativa)
 
 ```bash
 npm login
-npm publish --access public
+npm stage publish --access public
+npm stage approve <STAGE_ID>
 ```
 
 `prepublishOnly` esegue comunque typecheck, test e build prima del publish.

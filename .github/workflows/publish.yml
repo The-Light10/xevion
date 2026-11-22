@@ -24,7 +24,7 @@ jobs:
       - run: npm run typecheck
       - run: npm test
       - run: npm run build
-      # The token has direct publish permission (bypass 2FA) for automation.
-      - run: npm publish --access public --provenance
+      # The npm token is stage-only: a maintainer approves with 2FA.
+      - run: npm stage publish --access public --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

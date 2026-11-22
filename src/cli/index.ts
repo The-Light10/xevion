@@ -18,7 +18,7 @@ import { Renderer } from "../tui/render.js";
 import { appendMessages, createSession, exportMarkdown, listSessions, readSession } from "../sessions/store.js";
 import { redact } from "../security/redact.js";
 
-const VERSION = "0.1.0";
+const VERSION = "0.1.2";
 
 async function main(): Promise<number> {
   const args = parseArgs(process.argv.slice(2));
